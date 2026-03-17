@@ -1258,6 +1258,33 @@ p {
     border-radius: var(--radius-sm);
 }
 
+.company-logo {
+    display: inline-flex;
+    align-items: center;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 2px var(--space-3);
+    height: 28px;
+}
+
+.company-logo-starlly {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #9B3EC8;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    letter-spacing: 0.01em;
+}
+
+.company-logo-servy {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #2563EB;
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+}
+
 .timeline-status {
     font-size: var(--text-xs);
     font-weight: 600;
