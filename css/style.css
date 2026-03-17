@@ -1406,17 +1406,26 @@ p {
 
 .project-image {
     width: 100%;
-    aspect-ratio: 16/10;
+    aspect-ratio: 16/9;
     overflow: hidden;
     background: var(--color-accent);
     position: relative;
+    display: flex;
+    align-items: flex-start;
 }
 
 .project-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top center;
     transition: transform var(--transition-slow);
+    display: block;
+}
+
+.project-image img[src=""],
+.project-image img:not([src]) {
+    display: none;
 }
 
 .project-card:hover .project-image img {
