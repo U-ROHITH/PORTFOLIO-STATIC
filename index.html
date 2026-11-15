@@ -3,873 +3,596 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rohith Uppunuthula - Full-Stack Developer specializing in Django, Python, and modern web technologies. View my projects, experience, and get in touch.">
-    <meta name="keywords" content="Rohith Uppunuthula, Full-Stack Developer, Django Developer, Python Developer, Web Developer, Portfolio">
+    <meta name="description" content="Rohith Uppunuthula is the founder of BurntStack, a Warangal studio building websites, software and business systems.">
     <meta name="author" content="Rohith Uppunuthula">
+    <meta name="theme-color" content="#d9e5ea">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Rohith Uppunuthula | Full-Stack Developer">
-    <meta property="og:description" content="Building with purpose, learning in public. Full-Stack Developer specializing in Django and Python.">
+    <meta property="og:title" content="Greetings from Rohith Uppunuthula">
+    <meta property="og:description" content="Founder of BurntStack. I help people with a SaaS idea build it and get it live.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.rohithpatel.com/">
+    <meta property="og:image" content="https://www.rohithpatel.com/images/loanpredict.webp">
 
-    <title>Rohith Uppunuthula | Full-Stack Developer</title>
+    <title>Rohith Uppunuthula, founder of BurntStack</title>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- Vercel Analytics -->
-    <script defer src="/_vercel/insights/script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Work+Sans:wght@300;400;450;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Shrikhand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>document.documentElement.classList.add('js');</script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#home" class="logo">ROHITH UPPUNUTHULA<span class="logo-dot">.</span></a>
 
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#education" class="nav-link">Education</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#contact" class="nav-link nav-link-cta">Let's Talk</a></li>
-            </ul>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-plane" viewBox="0 0 24 24"><path fill="currentColor" d="M21 15.5v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V8.5l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-6z"/></symbol>
+        <symbol id="i-flip" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 0 1 14-5.3M20 4v4h-4M20 12a8 8 0 0 1-14 5.3M4 20v-4h4"/></symbol>
+    </svg>
 
-            <div class="nav-socials">
-                <a href="https://github.com/U-ROHITH" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="social-icon" data-tooltip="GitHub">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
-                </a>
-                <a href="https://linkedin.com/in/rohith-uppunuthula" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="social-icon" data-tooltip="LinkedIn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                </a>
-                <a href="https://leetcode.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LeetCode Profile" class="social-icon" data-tooltip="LeetCode">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
-                    </svg>
-                </a>
-                <a href="https://x.com/rohithuppunuth1" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile" class="social-icon" data-tooltip="Twitter">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
-                    </svg>
-                </a>
-            </div>
-
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <!-- Loader: the morning mail gets sorted and cancelled -->
+    <div class="loader" aria-hidden="true">
+        <div class="loader-stack">
+            <span class="loader-letter l1"></span>
+            <span class="loader-letter l2"></span>
+            <span class="loader-letter l3"></span>
+            <svg class="loader-mark" viewBox="0 0 200 200">
+                <defs><path id="loaderCircle" d="M100,100 m-70,0 a70,70 0 1,1 140,0 a70,70 0 1,1 -140,0"/></defs>
+                <circle cx="100" cy="100" r="86"/><circle cx="100" cy="100" r="54"/>
+                <text><textPath href="#loaderCircle">WARANGAL · TELANGANA · PAR AVION · </textPath></text>
+                <text x="100" y="110" text-anchor="middle" class="loader-count"><tspan data-count>0</tspan></text>
+            </svg>
         </div>
-    </nav>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="status-dot"></span>
-                    Available for opportunities
-                </div>
-                <p class="hero-greeting">Hello, I'm</p>
-                <h1 class="hero-name">ROHITH<br>UPPUNUTHULA</h1>
-                <div class="hero-roles">
-                    <span class="role-item">Full-Stack Developer</span>
-                    <span class="role-divider"></span>
-                    <span class="role-item">Django Specialist</span>
-                    <span class="role-divider"></span>
-                    <span class="role-item">Problem Solver</span>
-                </div>
-                <p class="hero-tagline">I build robust web applications with clean code and thoughtful architecture. Currently focused on Django, Python, and creating seamless user experiences.</p>
+    <div class="progress" aria-hidden="true"><span class="progress-bar"></span></div>
 
-                <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">
-                        <span>Start a Conversation</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
-                    <a href="#projects" class="btn btn-secondary">View My Work</a>
-                </div>
+    <header class="nav">
+        <a href="#home" class="nav-logo" aria-label="Rohith Uppunuthula, back to top">
+            <span class="nav-logo-stamp">RU</span>
+            <span class="nav-logo-text">Rohith Uppunuthula</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+            <a href="#about">Note</a>
+            <a href="#journey">Track record</a>
+            <a href="#work">Products</a>
+            <a href="#stamps">Stack</a>
+            <a href="https://cal.com/rohith-scal/30min" target="_blank" rel="noopener noreferrer" class="nav-cta">Book a call</a>
+        </nav>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </header>
 
-                <!-- Hero Social Links -->
-                <div class="hero-socials">
-                    <span class="hero-socials-label">Find me on</span>
-                    <div class="hero-socials-links">
-                        <a href="https://github.com/U-ROHITH" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="hero-social-link">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                            </svg>
-                            <span>GitHub</span>
-                        </a>
-                        <a href="https://linkedin.com/in/rohith-uppunuthula" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="hero-social-link">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://leetcode.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LeetCode" class="hero-social-link">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
-                            </svg>
-                            <span>LeetCode</span>
-                        </a>
-                        <a href="https://x.com/rohithuppunuth1" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="hero-social-link">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
-                            </svg>
-                            <span>Twitter</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll to explore</span>
-            <div class="scroll-line"></div>
-        </div>
-    </section>
+    <div class="menu" aria-hidden="true">
+        <nav class="menu-links" aria-label="Mobile">
+            <a href="#about">Founder's note</a>
+            <a href="#journey">Track record</a>
+            <a href="#work">Products</a>
+            <a href="#stamps">Stack</a>
+            <a href="#contact">Write to me</a>
+        </nav>
+        <a class="menu-call" href="https://cal.com/rohith-scal/30min" target="_blank" rel="noopener noreferrer">Book a free 1:1 call</a>
+    </div>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-image">
-                    <div class="image-placeholder">
-                        <img src="images/profile.png" alt="Rohith Uppunuthula" loading="lazy">
-                    </div>
-                    <div class="about-image-decoration"></div>
-                </div>
-                <div class="about-text">
-                    <span class="section-label">About Me</span>
-                    <h2 class="section-title">Crafting digital<br>experiences with code</h2>
-                    <div class="about-bio">
-                        <p>I'm an undergraduate student who's seriously focused on becoming a strong software developer through consistent, hands-on work. I didn't get into tech just to watch tutorials — I learn by building. Most of my time goes into creating real projects, understanding how systems work behind the scenes, and improving step by step.</p>
+    <main>
 
-                        <p>My main interests are backend development, full-stack web applications, and writing clean, logical code. I work with technologies like Python, Django, Java, and modern web tools such as HTML, CSS, and JavaScript. I enjoy connecting frontend and backend to turn ideas into working products.</p>
+        <!-- ============ HERO: a postcard that turns over ============ -->
+        <section class="hero" id="home">
+            <div class="hero-pin">
+                <div class="rays" aria-hidden="true"></div>
+                <svg class="flight" viewBox="0 0 1440 500" preserveAspectRatio="none" aria-hidden="true">
+                    <path id="flightPath" d="M-60 420 C 240 140, 520 470, 820 220 S 1280 60, 1520 170" />
+                </svg>
+                <span class="plane" aria-hidden="true"><svg><use href="#i-plane"/></svg></span>
 
-                        <p>What drives me is growth. I'm always looking at what I built yesterday and thinking, "How can I do this better?" My goal is to become an engineer who can build reliable, real-world software — and this portfolio is a record of that journey.</p>
-                    </div>
+                <div class="card-stage">
+                    <div class="card3d">
 
-                    <div class="about-details">
-                        <div class="about-detail-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                            <span>Warangal, Telangana, India</span>
-                        </div>
-                        <div class="about-detail-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                            </svg>
-                            <span>Open to Remote Work</span>
-                        </div>
-                    </div>
+                        <!-- FRONT -->
+                        <article class="face front">
+                            <div class="front-inner">
+                                <p class="greet"><span>Greetings</span> <span>from</span></p>
+                                <h1 class="letters" aria-label="Rohith">
+                                    <span class="bl" data-l="R">R</span><span class="bl" data-l="O">O</span><span class="bl" data-l="H">H</span><span class="bl" data-l="I">I</span><span class="bl" data-l="T">T</span><span class="bl" data-l="H">H</span>
+                                </h1>
+                                <p class="ribbon">Founder of BurntStack</p>
 
-                    <div class="about-cta">
-                        <a href="#contact" class="btn btn-primary">
-                            <span>Get in Touch</span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </a>
-                        <a href="resume/RESUME_ROHITH_UPPUNUTHULA.pdf" class="btn btn-outline" target="_blank" rel="noopener noreferrer" download>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                <polyline points="7 10 12 15 17 10"></polyline>
-                                <line x1="12" y1="15" x2="12" y2="3"></line>
-                            </svg>
-                            <span>Download Resume</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section class="experience" id="experience">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Experience</span>
-                <h2 class="section-title">Where I've<br>Built & Learned</h2>
-                <p class="section-description">Building real-world experience through projects, freelance work, and continuous learning.</p>
-            </div>
-
-            <div class="timeline" data-aos="fade-up">
-                <!-- Experience Item 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <span class="timeline-date">Jan 2026 — Apr 2026</span>
-                        <span class="company-logo"><span class="company-logo-starlly">Starlly</span></span>
-                        <span class="company-logo"><span class="company-logo-servy">Servy</span></span>
-                    </div>
-                    <h3 class="timeline-title">Starlly Solutions Pvt. Ltd. (Servy CRM)</h3>
-                    <p class="timeline-subtitle">Machine Learning Intern</p>
-                    <div class="timeline-location">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        Remote
-                    </div>
-                    <div class="timeline-description">
-                        <ul>
-                            <li>Built <strong>ServyPredict</strong>, an ML prediction engine for demand forecasting, customer churn, and escalation risk — giving business teams real-time operational forecasts and replacing manual estimation.</li>
-                            <li>Developed <strong>REST APIs</strong> for ML predictions on datasets exceeding <strong>2,000,000 rows</strong>, with background model loading to reduce latency and avoid request timeouts under peak load.</li>
-                            <li>Contributed to a <strong>Field Service Management (FSM)</strong> platform serving multiple client organizations; built a <strong>dynamic escalation engine</strong> that automated issue routing at runtime, eliminating manual workflows.</li>
-                        </ul>
-                    </div>
-                    <div class="timeline-tags">
-                        <span class="timeline-tag">Python</span>
-                        <span class="timeline-tag">Machine Learning</span>
-                        <span class="timeline-tag">REST APIs</span>
-                        <span class="timeline-tag">XGBoost</span>
-                        <span class="timeline-tag">Django</span>
-                    </div>
-                </div>
-
-                <!-- Experience Item 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <span class="timeline-date">Nov 2024 — Apr 2025</span>
-                        <span class="company-logo"><span class="company-logo-starlly">Starlly</span></span>
-                        <span class="company-logo"><span class="company-logo-servy">Servy</span></span>
-                    </div>
-                    <h3 class="timeline-title">Starlly Solutions Pvt. Ltd. (Servy)</h3>
-                    <p class="timeline-subtitle">Data Analytics Intern</p>
-                    <div class="timeline-location">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        Remote, India
-                    </div>
-                    <div class="timeline-description">
-                        <ul>
-                            <li>Processed <strong>14,635 real trip events</strong> from <strong>2,272 field technicians</strong> through a multi-pass pipeline, transforming raw Excel data into structured, analysis-ready outputs.</li>
-                            <li>Built a trip log analytics dashboard across <strong>3 iterations</strong> with Haversine distance tracking and per-technician timelines, exporting <strong>17 PDF and HTML reports</strong> per technician.</li>
-                            <li>Automated report generation, reducing manual effort <strong>from hours to seconds</strong> and delivering timestamped reports ready for field operations distribution.</li>
-                        </ul>
-                    </div>
-                    <div class="timeline-tags">
-                        <span class="timeline-tag">Python</span>
-                        <span class="timeline-tag">Data Analytics</span>
-                        <span class="timeline-tag">Pandas</span>
-                        <span class="timeline-tag">Excel</span>
-                        <span class="timeline-tag">PDF Reports</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section class="education" id="education">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Education</span>
-                <h2 class="section-title">Academic<br>Foundation</h2>
-                <p class="section-description">Building a strong foundation in computer science and engineering principles.</p>
-            </div>
-
-            <div class="timeline" data-aos="fade-up">
-                <!-- Education Item 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <span class="timeline-date">2023 — 2027</span>
-                        <span class="timeline-status">In Progress</span>
-                    </div>
-                    <h3 class="timeline-title">S R UNIVERSITY</h3>
-                    <h3 class="timeline-subtitle">Bachelor of Technology</h3>
-                    <p class="timeline-subtitle">Computer Science & Engineering</p>
-                    <div class="timeline-location">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        Warangal, Telangana, India
-                    </div>
-                    <div class="timeline-description">
-                        <p>Pursuing a comprehensive education in computer science with focus on software engineering and web technologies.</p>
-                        <ul>
-                            <li>Core coursework: Data Structures, Algorithms, DBMS, Operating Systems</li>
-                            <li>Specialization in Web Development and Software Engineering</li>
-                            <li>Active participation in coding clubs and hackathons</li>
-                            <li>Building real-world projects alongside academic curriculum</li>
-                        </ul>
-                    </div>
-                    <div class="timeline-tags">
-                        <span class="timeline-tag">Computer Science</span>
-                        <span class="timeline-tag">Software Engineering</span>
-                        <span class="timeline-tag">Web Development</span>
-                    </div>
-                </div>
-
-                <!-- Education Item 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <span class="timeline-date">2020 — 2022</span>
-                    </div>
-                    <h3 class="timeline-title">Ekashila Junior College</h3>
-                    <h3 class="timeline-subtitle">Intermediate (12th Grade)</h3>
-                    <p class="timeline-subtitle">MPC — Mathematics, Physics, Chemistry</p>
-                    <div class="timeline-location">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                         Warangal, Telangana, India
-                    </div>
-                    <div class="timeline-description">
-                        <p>Completed intermediate education with strong foundation in mathematics and sciences.</p>
-                        <ul>
-                            <li>Focused on analytical thinking and problem-solving</li>
-                            <li>Developed interest in programming and technology</li>
-                            <li>Self-taught basics of Python and web development</li>
-                        </ul>
-                    </div>
-                    <div class="timeline-tags">
-                        <span class="timeline-tag">Mathematics</span>
-                        <span class="timeline-tag">Physics</span>
-                        <span class="timeline-tag">Chemistry</span>
-                    </div>
-                </div>
-
-                <!-- Education Item 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <span class="timeline-date">2020</span>
-                    </div>
-                    <h3 class="timeline-title">SRI CHAITANYA e-TECHNO SCHOOL</h3>
-                    <h3 class="timeline-subtitle">Secondary School (10th Grade)</h3>
-                    <p class="timeline-subtitle">State Board</p>
-                    <div class="timeline-location">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        Warangal, Telangana, India
-                    </div>
-                    <div class="timeline-description">
-                        <p>Completed secondary education with strong academic performance, laying the groundwork for future technical studies.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <div class="section-header centered">
-                <span class="section-label">Projects</span>
-                <h2 class="section-title">Selected Work</h2>
-                <p class="section-description">Real-world applications built with clean code, thoughtful architecture, and attention to detail.</p>
-            </div>
-
-            <div class="projects-grid">
-                <!-- Project 1: LoanPredict.AI -->
-                <article class="project-card" data-aos="fade-up">
-                    <div class="project-image">
-                        <img src="images/loanprediction.png" alt="LoanPredict.AI screenshot" loading="lazy">
-                        <div class="project-overlay">
-                            <span>View Project</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <span class="project-tag">ML / FinTech</span>
-                            <span class="project-year">2025</span>
-                        </div>
-                        <h3 class="project-title">LoanPredict.AI</h3>
-                        <p class="project-description">A full-stack machine learning application that predicts loan approval in real-time using an XGBoost model trained on 52,000 applications. Features a four-step form, confidence scores, EMI calculations, and an admin dashboard.</p>
-
-                        <div class="project-tech">
-                            <span class="tech-badge">Django</span>
-                            <span class="tech-badge">XGBoost</span>
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">scikit-learn</span>
-                            <span class="tech-badge">PostgreSQL</span>
-                        </div>
-
-                        <div class="project-links">
-                            <a href="https://loan-prediction-ai.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                                <span>Live Demo</span>
-                            </a>
-                            <a href="https://github.com/U-ROHITH/Loan-prediction.Ai" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                </svg>
-                                <span>Source Code</span>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 3: Pedal-Share -->
-                <article class="project-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-image">
-                        <img src="images/pedal share.png" alt="Pedal-Share screenshot" loading="lazy">
-                        <div class="project-overlay">
-                            <span>View Project</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <span class="project-tag">Full-Stack</span>
-                            <span class="project-year">2025</span>
-                        </div>
-                        <h3 class="project-title">Pedal-Share</h3>
-                        <p class="project-description">A campus bicycle rental and sharing platform enabling students to list, browse, and book bikes through a wallet-based booking system with authentication, Stripe/PayPal payments, and an admin dashboard.</p>
-
-                        <div class="project-tech">
-                            <span class="tech-badge">Django</span>
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Bootstrap</span>
-                            <span class="tech-badge">SQLite</span>
-                            <span class="tech-badge">Stripe</span>
-                        </div>
-
-                        <div class="project-links">
-                            <a href="https://pedal-share.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                                <span>Live Demo</span>
-                            </a>
-                            <a href="https://github.com/U-ROHITH/Pedal-Share" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                </svg>
-                                <span>Source Code</span>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 2: AgroSense -->
-                <article class="project-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-image">
-                        <img src="images/agro sense.png" alt="AgroSense screenshot" loading="lazy">
-                        <div class="project-overlay">
-                            <span>View Project</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <span class="project-tag">ML / AgriTech</span>
-                            <span class="project-year">2025</span>
-                        </div>
-                        <h3 class="project-title">AgroSense</h3>
-                        <p class="project-description">A smart AI farming advisor that recommends crops based on soil N P K, pH, temperature, humidity, and rainfall. Powered by a trained Random Forest model delivering 95%+ accuracy with soil health scores, fertiliser plans, and profit estimates.</p>
-
-                        <div class="project-tech">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Random Forest</span>
-                            <span class="tech-badge">Django</span>
-                            <span class="tech-badge">scikit-learn</span>
-                            <span class="tech-badge">JavaScript</span>
-                        </div>
-
-                        <div class="project-links">
-                            <a href="https://github.com/U-ROHITH/Crop-Prediction" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                                <span>Live Demo</span>
-                            </a>
-                            <a href="https://github.com/U-ROHITH/Crop-Prediction" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                </svg>
-                                <span>Source Code</span>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 4: Open Source Contribution - Kestra -->
-                <article class="project-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="project-image">
-                        <img src="images/kestra.png" alt="Kestra open source contribution screenshot" loading="lazy">
-                        <div class="project-overlay">
-                            <span>View Contribution</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <span class="project-tag">Open Source</span>
-                            <span class="project-year">2025</span>
-                        </div>
-                        <h3 class="project-title">Kestra — Open Source Contribution</h3>
-                        <p class="project-description">Contributed to Kestra, a popular open-source workflow orchestration platform. Fixed a UI inconsistency by replacing deprecated <code>TimelineClockOutline</code> execution icons with <code>PlayOutline</code> following the left menu revamp (PR #13878).</p>
-
-                        <div class="project-tech">
-                            <span class="tech-badge">Vue.js</span>
-                            <span class="tech-badge">Frontend</span>
-                            <span class="tech-badge">Open Source</span>
-                        </div>
-
-                        <div class="project-links">
-                            <a href="https://github.com/kestra-io/kestra/pull/13878" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                                <span>View PR</span>
-                            </a>
-                            <a href="https://github.com/kestra-io/kestra" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                </svg>
-                                <span>Repository</span>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-        <div class="container">
-            <div class="section-header centered">
-                <span class="section-label">Skills</span>
-                <h2 class="section-title">Technologies & Tools</h2>
-                <p class="section-description">The core technologies I use to bring ideas to life.</p>
-            </div>
-
-            <div class="skills-grid">
-                <!-- Programming -->
-                <div class="skill-category" data-aos="fade-up">
-                    <div class="skill-category-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
-                        </svg>
-                    </div>
-                    <h3 class="skill-category-title">Programming</h3>
-                    <ul class="skill-list">
-                        <li>Python</li>
-                        <li>Java</li>
-                        <li>JavaScript</li>
-                    </ul>
-                </div>
-
-                <!-- Frameworks -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
-                    <div class="skill-category-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                            <line x1="8" y1="21" x2="16" y2="21"></line>
-                            <line x1="12" y1="17" x2="12" y2="21"></line>
-                        </svg>
-                    </div>
-                    <h3 class="skill-category-title">Frameworks</h3>
-                    <ul class="skill-list">
-                        <li>Django</li>
-                        <li>Scikit-learn</li>
-                        <li>Pandas</li>
-                        <li>NumPy</li>
-                    </ul>
-                </div>
-
-                <!-- Web -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                    <div class="skill-category-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="skill-category-title">Web</h3>
-                    <ul class="skill-list">
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>Bootstrap</li>
-                        <li>SweetAlert.js</li>
-                    </ul>
-                </div>
-
-                <!-- Databases -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
-                    <div class="skill-category-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
-                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-                        </svg>
-                    </div>
-                    <h3 class="skill-category-title">Databases</h3>
-                    <ul class="skill-list">
-                        <li>MySQL</li>
-                        <li>SQLite</li>
-                    </ul>
-                </div>
-
-                <!-- Tools -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
-                    <div class="skill-category-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="skill-category-title">Tools</h3>
-                    <ul class="skill-list">
-                        <li>Git</li>
-                        <li>VS Code</li>
-                        <li>GitHub</li>
-                    </ul>
-                </div>
-
-                <!-- ML & AI -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="500">
-                    <div class="skill-category-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2a10 10 0 1 0 10 10"></path>
-                            <path d="M12 6v6l4 2"></path>
-                        </svg>
-                    </div>
-                    <h3 class="skill-category-title">ML & AI</h3>
-                    <ul class="skill-list">
-                        <li>Data Analysis</li>
-                        <li>Machine Learning</li>
-                    </ul>
-                </div>
-
-                <!-- Core CS -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="600">
-                    <div class="skill-category-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="skill-category-title">Core CS</h3>
-                    <ul class="skill-list">
-                        <li>Data Structures & Algorithms</li>
-                        <li>OOPs</li>
-                        <li>DBMS</li>
-                        <li>Operating Systems</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- LeetCode Stats Banner -->
-            <div class="leetcode-banner" data-aos="fade-up">
-                <div class="leetcode-banner-content">
-                    <div class="leetcode-banner-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
-                        </svg>
-                    </div>
-                    <div class="leetcode-banner-text">
-                        <h4>Practicing DSA on LeetCode</h4>
-                        <p>Sharpening problem-solving skills daily with algorithmic challenges</p>
-                    </div>
-                    <a href="https://leetcode.com/yourusername" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
-                        View Profile
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <span class="section-label">Contact</span>
-                    <h2 class="section-title">Let's Build<br>Something Great</h2>
-                    <p class="contact-description">Have a project in mind, want to collaborate, or just want to say hi? I'd love to hear from you. Drop me a message and I'll get back to you as soon as possible.</p>
-
-                    <div class="contact-methods">
-                        <a href="mailto:uppunuthula.rohith@gmail.com" class="contact-method">
-                            <div class="contact-method-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                <div class="hero-stamp stamp" aria-hidden="true">
+                                    <img src="images/profile.webp" alt="" width="300" height="686">
+                                    <span class="stamp-value">₹5</span>
+                                </div>
+                                <svg class="postmark hero-postmark" viewBox="0 0 260 120" aria-hidden="true">
+                                    <circle cx="60" cy="60" r="44" /><circle cx="60" cy="60" r="36" />
+                                    <text x="60" y="53" text-anchor="middle" class="pm-small">WARANGAL</text>
+                                    <text x="60" y="70" text-anchor="middle" class="pm-big">2026</text>
+                                    <text x="60" y="82" text-anchor="middle" class="pm-small">INDIA</text>
+                                    <path class="wave" d="M112 36 q12 -8 24 0 t24 0 t24 0 t24 0 t24 0" />
+                                    <path class="wave" d="M112 52 q12 -8 24 0 t24 0 t24 0 t24 0 t24 0" />
+                                    <path class="wave" d="M112 68 q12 -8 24 0 t24 0 t24 0 t24 0 t24 0" />
+                                    <path class="wave" d="M112 84 q12 -8 24 0 t24 0 t24 0 t24 0 t24 0" />
                                 </svg>
                             </div>
-                            <div class="contact-method-text">
-                                <span class="contact-method-label">Email me at</span>
-                                <span class="contact-method-value">uppunuthula.rohith@gmail.com</span>
-                                <br>
-                                <span class="contact-method-label">Also reach out at </span>
-                                <span class="contact-method-value">info@rohithpatel.com</span>
+                        </article>
+
+                        <!-- BACK: founder's note -->
+                        <article class="face back" id="about" aria-label="Founder's note">
+                            <div class="back-message">
+                                <p class="back-date">Warangal, 2026</p>
+                                <p>Dear founder,</p>
+                                <p>BurntStack builds websites, software and connected business systems: SaaS products, ERP, AI automations, voice agents, mobile apps and online stores. If you have the idea but no dev team, we take it from a first conversation to a tested release.</p>
+                                <p>I've done this before. I scaled a SaaS app to 200+ paying customers, built client projects at Pixels &amp; Code Studios, and shipped machine learning into a production CRM.</p>
+                                <p>Stuck on where to start? Book a free call and we'll talk it through.</p>
+                                <p class="sign-off">Wish you were here,</p>
+                                <svg class="signature" viewBox="0 0 320 90" aria-label="Signed, Rohith">
+                                    <path d="M10 62 C 20 20, 40 12, 44 30 C 48 48, 24 60, 30 64 C 40 70, 56 40, 62 46 C 68 52, 58 66, 70 64 C 82 62, 84 44, 92 46 C 100 48, 92 64, 102 62 C 112 60, 116 18, 124 20 C 130 22, 118 60, 126 64 C 134 68, 140 46, 148 46 C 156 46, 150 64, 160 62 C 172 60, 176 22, 184 24 C 190 26, 180 64, 188 64 C 198 64, 200 46, 210 46 C 220 46, 214 66, 226 62 C 250 56, 280 50, 310 40"/>
+                                </svg>
                             </div>
-                        </a>
-                    </div>
-
-                    <div class="contact-socials">
-                        <p class="contact-socials-label">Or find me on</p>
-                        <div class="contact-socials-links">
-                            <a href="https://github.com/U-ROHITH" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="contact-social-link">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                </svg>
-                            </a>
-                            <a href="https://linkedin.com/in/rohith-uppunuthula" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="contact-social-link">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                    <rect x="2" y="9" width="4" height="12"></rect>
-                                    <circle cx="4" cy="4" r="2"></circle>
-                                </svg>
-                            </a>
-                            <a href="https://leetcode.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LeetCode" class="contact-social-link">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
-                                </svg>
-                            </a>
-                            <a href="https://x.com/rohithuppunuth1" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="contact-social-link">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
-                                </svg>
-                            </a>
-                        </div>
+                            <div class="back-address">
+                                <div class="back-stamps" aria-hidden="true">
+                                    <svg class="postmark back-postmark" viewBox="0 0 120 120">
+                                        <circle cx="60" cy="60" r="44" /><circle cx="60" cy="60" r="36" />
+                                        <text x="60" y="57" text-anchor="middle" class="pm-small">BURNT</text>
+                                        <text x="60" y="73" text-anchor="middle" class="pm-small">STACK</text>
+                                    </svg>
+                                    <div class="stamp stamp-sm stamp-green"><svg class="stamp-ic"><use href="#i-plane"/></svg></div>
+                                </div>
+                                <dl class="address">
+                                    <div><dt>To</dt><dd>Anyone with an idea worth building</dd></div>
+                                    <div><dt>From</dt><dd>Rohith Uppunuthula, Founder &amp; Director</dd></div>
+                                    <div><dt>At</dt><dd><a href="https://www.burntstack.com" target="_blank" rel="noopener noreferrer">BurntStack Technologies Pvt. Ltd.</a></dd></div>
+                                    <div><dt>In</dt><dd>Warangal, Telangana. Building beyond.</dd></div>
+                                </dl>
+                                <a class="btn btn-red" href="https://cal.com/rohith-scal/30min" target="_blank" rel="noopener noreferrer">Book a free 1:1 call</a>
+                            </div>
+                        </article>
                     </div>
                 </div>
 
-                <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your name " required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Yourmail@example.com" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, idea, or just say hello..." required></textarea>
-                        </div>
-
-                        <input type="hidden" name="access_key" value="04552b51-7f92-48ce-9cda-fd7610032fe3">
-
-                        <button type="submit" class="btn btn-primary submit-btn">
-                            <span class="btn-text">Send Message</span>
-                            <span class="btn-loading hidden">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spinner">
-                                    <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
-                                    <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"></path>
-                                </svg>
-                                Sending...
-                            </span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
-                                <line x1="22" y1="2" x2="11" y2="13"></line>
-                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                            </svg>
-                        </button>
-
-                        <div class="form-message hidden" id="formMessage"></div>
-                    </form>
+                <div class="hero-foot">
+                    <p class="lede">I run <strong>BurntStack</strong>, a Warangal studio that builds websites, software and business systems. Bring the idea; we ship it.</p>
+                    <div class="hero-actions">
+                        <a href="https://cal.com/rohith-scal/30min" target="_blank" rel="noopener noreferrer" class="btn btn-red">Book a free 1:1 call</a>
+                        <a href="#work" class="btn btn-paper">See what we've shipped</a>
+                    </div>
                 </div>
+                <p class="turn-hint" aria-hidden="true">Scroll to turn the card over</p>
+            </div>
+        </section>
+
+        <!-- ============ MARQUEE ============ -->
+        <div class="marquee" role="note" aria-label="What BurntStack builds: Websites, Software applications, ERP applications, AI automations, Voice agents, SaaS applications, Mobile applications, E-commerce">
+            <div class="marquee-track">
+                <span>Websites</span><b>✶</b><span>Software applications</span><b>✶</b><span>ERP applications</span><b>✶</b><span>AI automations</span><b>✶</b><span>Voice agents</span><b>✶</b><span>SaaS applications</span><b>✶</b><span>Mobile applications</span><b>✶</b><span>E-commerce</span><b>✶</b>
+                <span>Websites</span><b>✶</b><span>Software applications</span><b>✶</b><span>ERP applications</span><b>✶</b><span>AI automations</span><b>✶</b><span>Voice agents</span><b>✶</b><span>SaaS applications</span><b>✶</b><span>Mobile applications</span><b>✶</b><span>E-commerce</span><b>✶</b>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
+        <!-- ============ PROCESS ============ -->
+        <section class="section process" id="process">
+            <h2 class="h2">From first conversation to launch</h2>
+            <p class="sub">Every BurntStack project moves through three stages. Decisions and responsibilities are written down at each one.</p>
+            <ol class="tickets">
+                <li class="tk">
+                    <b>1</b>
+                    <span class="tk-title">Define the requirement</span>
+                    <span class="tk-body">We review the business, its users, current systems, constraints and the outcome the product has to support.</span>
+                    <span class="tk-get">You get a written understanding of the problem and a practical next step.</span>
+                </li>
+                <li class="tk">
+                    <b>2</b>
+                    <span class="tk-title">Approve the scope</span>
+                    <span class="tk-body">Features, integrations, responsibilities and delivery stages are documented before any development starts.</span>
+                    <span class="tk-get">You get a defined scope, a delivery plan and a quotation to approve.</span>
+                </li>
+                <li class="tk">
+                    <b>3</b>
+                    <span class="tk-title">Build and release</span>
+                    <span class="tk-body">We design, develop, test and deploy the agreed product, then hand over everything your team needs.</span>
+                    <span class="tk-get">You get a working release with access, documentation and a support plan.</span>
+                </li>
+            </ol>
+            <p class="process-cta"><a class="btn btn-red" href="https://cal.com/burntstack/30min" target="_blank" rel="noopener noreferrer">Schedule a 30-minute requirements call</a> <span>No charge.</span></p>
+        </section>
+
+        <!-- ============ TRACK RECORD ============ -->
+        <section class="section journey" id="journey">
+            <h2 class="h2">Where I've shipped</h2>
+            <p class="sub">Newest stop first.</p>
+
+            <div class="route">
+                <div class="route-line" aria-hidden="true"><span class="route-fill"></span><span class="route-plane"><svg><use href="#i-plane"/></svg></span></div>
+
+                <article class="stop">
+                    <div class="passport p-red" aria-hidden="true"><span>Founded</span><b>Jul 2026</b><span>Warangal</span></div>
+                    <div class="ticket">
+                        <p class="ticket-when">July 2026 to now, Warangal</p>
+                        <h3>Founder and Director</h3>
+                        <p class="ticket-org"><a href="https://www.burntstack.com" target="_blank" rel="noopener noreferrer">BurntStack Technologies Pvt. Ltd.</a></p>
+                        <ul>
+                            <li>Founded BurntStack to take people from a SaaS idea to a working product without hiring a dev team of their own. Appointed Director on 27 August 2026.</li>
+                            <li>Lead a studio that builds websites, software, ERP, SaaS, mobile apps, e-commerce, AI automations and voice agents for businesses.</li>
+                            <li>Shipped client builds including Hapvoo (formerly TheBookMyVenues.in), the Velvora fashion store and an online shop for Ram Laxman Gifts &amp; Novelties in Warangal.</li>
+                            <li>Earlier, scaled a SaaS app to <strong>200+ paying customers</strong> and built client projects at Pixels &amp; Code Studios.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="stop">
+                    <div class="passport p-green" aria-hidden="true"><span>Arrived</span><b>Jan 2026</b><span>Remote</span></div>
+                    <div class="ticket">
+                        <p class="ticket-when">January to May 2026, remote</p>
+                        <h3>Machine Learning Trainee</h3>
+                        <p class="ticket-org">Starlly Solutions, on the Servy field-service platform</p>
+                        <ul>
+                            <li>Built ServyPredict, an ML engine that forecasts demand, churn and escalation risk. Business teams use it in place of manual estimates.</li>
+                            <li>Served predictions through Django REST APIs over <strong>2,000,000+ rows</strong>. Models load in the background, so requests hold up at peak load.</li>
+                            <li>Wrote a runtime escalation engine that routes issues across client organisations without manual triage.</li>
+                        </ul>
+                        <p class="tags">Python, TensorFlow, XGBoost, Django REST Framework, MySQL</p>
+                    </div>
+                </article>
+
+                <article class="stop">
+                    <div class="passport p-saffron" aria-hidden="true"><span>Arrived</span><b>Nov 2024</b><span>Remote</span></div>
+                    <div class="ticket">
+                        <p class="ticket-when">November 2024 to March 2025, remote</p>
+                        <h3>Back End Developer Intern</h3>
+                        <p class="ticket-org">Starlly Solutions</p>
+                        <ul>
+                            <li>Wrote production Django REST endpoints, with validation, serializers and role-based access, for new Servy features.</li>
+                            <li>Connected them to React modules and designed the MySQL schemas behind them.</li>
+                            <li>Built a trip-log analytics pipeline over 14,635 events from 2,272 field technicians, with automated reports.</li>
+                            <li>Asked back as an ML Trainee because of the work I shipped.</li>
+                        </ul>
+                        <p class="tags">Django, DRF, React, MySQL, Pandas</p>
+                    </div>
+                </article>
+
+                <article class="stop">
+                    <div class="passport p-ink" aria-hidden="true"><span>Studying</span><b>2023–27</b><span>Warangal</span></div>
+                    <div class="ticket ticket-quiet">
+                        <p class="ticket-when">2023 to 2027, Warangal</p>
+                        <h3>B.Tech in Computer Science</h3>
+                        <p class="ticket-org">SR University, 9.87 CGPA</p>
+                        <ul>
+                            <li>Shortlisted for the Smart India Hackathon internal round. Competed at TechnoZion, NIT Warangal, where Pedal-Share began.</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============ PRODUCTS ============ -->
+        <section class="work" id="work">
+            <div class="work-pin">
+                <div class="work-head">
+                    <h2 class="h2">What we've shipped</h2>
+                    <p class="sub">BurntStack client builds first, then my own products. Hover a card, or tap it, to read the back.</p>
+                </div>
+
+                <div class="work-track">
+                    <article class="pc pc-client">
+                        <div class="pc-inner">
+                            <div class="pc-face pc-front">
+                                <span class="pc-photo"><img src="images/hapvoo.webp" alt="Hapvoo home page with venue categories" loading="lazy" width="1200" height="675"></span>
+                                <p class="pc-label"><span class="pc-greet">Greetings from</span><span class="pc-title">Hapvoo</span></p>
+                                <span class="pc-badge">BurntStack</span>
+                            </div>
+                            <div class="pc-face pc-back">
+                                <div class="pc-text">
+                                    <h3>Hapvoo</h3>
+                                    <p>A venue booking and events platform, formerly TheBookMyVenues.in. People discover and book party halls, private theatres, sports and gaming venues, resorts and event tickets.</p>
+                                    <p class="tags">BurntStack client build · Venue booking</p>
+                                </div>
+                                <div class="pc-links">
+                                    <div class="stamp stamp-sm stamp-red" aria-hidden="true"><span class="stamp-glyph">Hv</span></div>
+                                    <a href="https://hapvoo.com/" target="_blank" rel="noopener noreferrer">Visit hapvoo.com</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pc-flip" aria-label="Turn over the Hapvoo card"><svg><use href="#i-flip"/></svg></button>
+                    </article>
+                    <article class="pc pc-client">
+                        <div class="pc-inner">
+                            <div class="pc-face pc-front">
+                                <span class="pc-photo"><img src="images/velvora.webp" alt="Velvora clothing store home page" loading="lazy" width="1200" height="675"></span>
+                                <p class="pc-label"><span class="pc-greet">Greetings from</span><span class="pc-title">Velvora</span></p>
+                                <span class="pc-badge">BurntStack</span>
+                            </div>
+                            <div class="pc-face pc-back">
+                                <div class="pc-text">
+                                    <h3>Velvora</h3>
+                                    <p>A fashion storefront with curated collections and a browsable clothing catalogue.</p>
+                                    <p class="tags">BurntStack client build · Fashion e-commerce</p>
+                                </div>
+                                <div class="pc-links">
+                                    <div class="stamp stamp-sm stamp-ink" aria-hidden="true"><span class="stamp-glyph">Vv</span></div>
+                                    <a href="https://clothing-e-commerce-frondend.vercel.app/" target="_blank" rel="noopener noreferrer">Visit the store</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pc-flip" aria-label="Turn over the Velvora card"><svg><use href="#i-flip"/></svg></button>
+                    </article>
+                    <article class="pc pc-client">
+                        <div class="pc-inner">
+                            <div class="pc-face pc-front">
+                                <span class="pc-photo"><img src="images/ramlaxman.webp" alt="Ram Laxman Gifts and Novelties online shop" loading="lazy" width="1200" height="675"></span>
+                                <p class="pc-label"><span class="pc-greet">Greetings from</span><span class="pc-title">Ram Laxman Gifts</span></p>
+                                <span class="pc-badge">BurntStack</span>
+                            </div>
+                            <div class="pc-face pc-back">
+                                <div class="pc-text">
+                                    <h3>Ram Laxman Gifts &amp; Novelties</h3>
+                                    <p>An online gift shop for a Warangal business, selling gifts, toys and personalised collections, with same-day delivery in Warangal.</p>
+                                    <p class="tags">BurntStack client build · Gifts e-commerce</p>
+                                </div>
+                                <div class="pc-links">
+                                    <div class="stamp stamp-sm stamp-saffron" aria-hidden="true"><span class="stamp-glyph">RL</span></div>
+                                    <a href="https://gift-shop-frontend-red.vercel.app/" target="_blank" rel="noopener noreferrer">Visit the shop</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pc-flip" aria-label="Turn over the Ram Laxman Gifts &amp; Novelties card"><svg><use href="#i-flip"/></svg></button>
+                    </article>
+                    <article class="pc pc-client">
+                        <div class="pc-inner">
+                            <div class="pc-face pc-front">
+                                <span class="pc-photo"><img src="images/manakutumbam.webp" alt="ManaKutumbam coming-soon page" loading="lazy" width="1200" height="675"></span>
+                                <p class="pc-label"><span class="pc-greet">Greetings from</span><span class="pc-title">ManaKutumbam</span></p>
+                                <span class="pc-badge">BurntStack</span>
+                            </div>
+                            <div class="pc-face pc-back">
+                                <div class="pc-text">
+                                    <h3>ManaKutumbam</h3>
+                                    <p>A coming-soon site for a platform that helps families connect, verify and build lasting bonds.</p>
+                                    <p class="tags">BurntStack client build · Family and community</p>
+                                </div>
+                                <div class="pc-links">
+                                    <div class="stamp stamp-sm stamp-green" aria-hidden="true"><span class="stamp-glyph">MK</span></div>
+                                    <a href="https://www.manakutumbam.in/" target="_blank" rel="noopener noreferrer">Visit manakutumbam.in</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pc-flip" aria-label="Turn over the ManaKutumbam card"><svg><use href="#i-flip"/></svg></button>
+                    </article>
+                    <article class="pc">
+                        <div class="pc-inner">
+                            <div class="pc-face pc-front">
+                                <span class="pc-photo"><img src="images/loanpredict.webp" alt="LoanPredict.AI loan application form" loading="lazy" width="1400" height="711"></span>
+                                <p class="pc-label"><span class="pc-greet">Greetings from</span><span class="pc-title">LoanPredict.AI</span></p>
+                            </div>
+                            <div class="pc-face pc-back">
+                                <div class="pc-text">
+                                    <h3>LoanPredict.AI</h3>
+                                    <p>Loan approval prediction, taken from dataset to production. The XGBoost model is trained on 52,000 applications and scores 85% accuracy with 0.82 AUC. Applicants get a live EMI preview and a plain reason when they are declined.</p>
+                                    <p class="tags">Django, XGBoost, scikit-learn, Render</p>
+                                </div>
+                                <div class="pc-links">
+                                    <div class="stamp stamp-sm stamp-red" aria-hidden="true"><span class="stamp-glyph">₹</span></div>
+                                    <a href="https://loan-prediction-ai.onrender.com/" target="_blank" rel="noopener noreferrer">Open the app</a>
+                                    <a href="https://github.com/U-ROHITH/Loan-prediction.Ai" target="_blank" rel="noopener noreferrer">Read the code</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pc-flip" aria-label="Turn over the LoanPredict.AI card"><svg><use href="#i-flip"/></svg></button>
+                    </article>
+
+                    <article class="pc">
+                        <div class="pc-inner">
+                            <div class="pc-face pc-front">
+                                <span class="pc-photo"><img src="images/coursescheduler.webp" alt="Smart Course Scheduler start screen" loading="lazy" width="1200" height="600"></span>
+                                <p class="pc-label"><span class="pc-greet">Greetings from</span><span class="pc-title">Course Scheduler</span></p>
+                            </div>
+                            <div class="pc-face pc-back">
+                                <div class="pc-text">
+                                    <h3>Smart Course Scheduler</h3>
+                                    <p>Paste a YouTube playlist, set your study hours, and get a day-by-day plan. Long videos split across days, and the plan exports to any calendar as an .ics file. No login needed.</p>
+                                    <p class="tags">Django, YouTube Data API, JavaScript, Vercel</p>
+                                </div>
+                                <div class="pc-links">
+                                    <div class="stamp stamp-sm stamp-green" aria-hidden="true"><span class="stamp-glyph">ics</span></div>
+                                    <a href="https://smart-course-scheduler.vercel.app" target="_blank" rel="noopener noreferrer">Open the app</a>
+                                    <a href="https://github.com/U-ROHITH/Smart-Course-Scheduler" target="_blank" rel="noopener noreferrer">Read the code</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pc-flip" aria-label="Turn over the Smart Course Scheduler card"><svg><use href="#i-flip"/></svg></button>
+                    </article>
+
+                    <article class="pc">
+                        <div class="pc-inner">
+                            <div class="pc-face pc-front">
+                                <span class="pc-photo"><img src="images/agrosense.webp" alt="AgroSense crop recommendation dashboard" loading="lazy" width="1400" height="709"></span>
+                                <p class="pc-label"><span class="pc-greet">Greetings from</span><span class="pc-title">AgroSense</span></p>
+                            </div>
+                            <div class="pc-face pc-back">
+                                <div class="pc-text">
+                                    <h3>AgroSense</h3>
+                                    <p>A farming platform built on 10+ ML models and 40+ agricultural datasets. It recommends crops and fertiliser, predicts yield, detects rice and soybean disease, and tracks soil depletion over time.</p>
+                                    <p class="tags">Python, Random Forest, Django, Pandas</p>
+                                </div>
+                                <div class="pc-links">
+                                    <div class="stamp stamp-sm stamp-saffron" aria-hidden="true"><span class="stamp-glyph">Ag</span></div>
+                                    <a href="https://github.com/U-ROHITH/Crop-Prediction" target="_blank" rel="noopener noreferrer">Read the code</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pc-flip" aria-label="Turn over the AgroSense card"><svg><use href="#i-flip"/></svg></button>
+                    </article>
+
+                    <article class="pc">
+                        <div class="pc-inner">
+                            <div class="pc-face pc-front">
+                                <span class="pc-photo"><img src="images/kestra.webp" alt="Kestra workflow orchestration interface" loading="lazy" width="1400" height="711"></span>
+                                <p class="pc-label"><span class="pc-greet">Greetings from</span><span class="pc-title">Kestra</span></p>
+                            </div>
+                            <div class="pc-face pc-back">
+                                <div class="pc-text">
+                                    <h3>Kestra, open source</h3>
+                                    <p>A merged fix in Kestra, an open-source workflow orchestration platform. After the left-menu redesign, the execution views still used the old TimelineClockOutline icon. I replaced it with PlayOutline in pull request 13878.</p>
+                                    <p class="tags">Vue.js, open source</p>
+                                </div>
+                                <div class="pc-links">
+                                    <div class="stamp stamp-sm stamp-red" aria-hidden="true"><span class="stamp-glyph">PR</span></div>
+                                    <a href="https://github.com/kestra-io/kestra/pull/13878" target="_blank" rel="noopener noreferrer">See the pull request</a>
+                                    <a href="https://github.com/kestra-io/kestra" target="_blank" rel="noopener noreferrer">Kestra on GitHub</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pc-flip" aria-label="Turn over the Kestra card"><svg><use href="#i-flip"/></svg></button>
+                    </article>
+
+                    <article class="pc">
+                        <div class="pc-inner">
+                            <div class="pc-face pc-front">
+                                <span class="pc-photo"><img src="images/pedalshare.webp" alt="Pedal-Share campus cycle rental home page" loading="lazy" width="1400" height="704"></span>
+                                <p class="pc-label"><span class="pc-greet">Greetings from</span><span class="pc-title">Pedal-Share</span></p>
+                            </div>
+                            <div class="pc-face pc-back">
+                                <div class="pc-text">
+                                    <h3>Pedal-Share</h3>
+                                    <p>Campus cycle sharing, started at the NIT Warangal hackathon. Students list their cycles, rent other people's and pay from a wallet. This was my first full-stack app to go live.</p>
+                                    <p class="tags">Django, Bootstrap, SQLite, Render</p>
+                                </div>
+                                <div class="pc-links">
+                                    <div class="stamp stamp-sm stamp-ink" aria-hidden="true"><span class="stamp-glyph">Cy</span></div>
+                                    <a href="https://pedal-share.onrender.com/" target="_blank" rel="noopener noreferrer">Open the app</a>
+                                    <a href="https://github.com/U-ROHITH/Pedal-Share" target="_blank" rel="noopener noreferrer">Read the code</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pc-flip" aria-label="Turn over the Pedal-Share card"><svg><use href="#i-flip"/></svg></button>
+                    </article>
+
+                    <article class="pc pc-wip">
+                        <p class="pc-greet">Next postcard from</p>
+                        <p class="pc-title">The Western Ghats</p>
+                        <p>In progress: landslide-susceptibility maps for the Western Ghats. The model combines satellite imagery, terrain, hydrology and past landslide records to rank risk district by district.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ STACK ============ -->
+        <section class="section stamps" id="stamps">
+            <h2 class="h2">The stack I build on</h2>
+            <p class="sub">Every stamp here has been cancelled on a shipped product.</p>
+
+            <div class="album">
+                <div class="sheet">
+                    <h3>Languages</h3>
+                    <div class="sheet-grid">
+                        <div class="stamp skill stamp-red"><span class="stamp-glyph">Py</span><span class="stamp-name">Python</span></div>
+                        <div class="stamp skill stamp-green"><span class="stamp-glyph">Jv</span><span class="stamp-name">Java</span></div>
+                        <div class="stamp skill stamp-saffron"><span class="stamp-glyph">JS</span><span class="stamp-name">JavaScript</span></div>
+                        <div class="stamp skill stamp-ink"><span class="stamp-glyph">TS</span><span class="stamp-name">TypeScript</span></div>
+                    </div>
+                </div>
+                <div class="sheet">
+                    <h3>Backend and data</h3>
+                    <div class="sheet-grid">
+                        <div class="stamp skill stamp-green"><span class="stamp-glyph">Dj</span><span class="stamp-name">Django</span></div>
+                        <div class="stamp skill stamp-red"><span class="stamp-glyph">DRF</span><span class="stamp-name">REST APIs</span></div>
+                        <div class="stamp skill stamp-ink"><span class="stamp-glyph">My</span><span class="stamp-name">MySQL</span></div>
+                        <div class="stamp skill stamp-saffron"><span class="stamp-glyph">Pg</span><span class="stamp-name">PostgreSQL</span></div>
+                    </div>
+                </div>
+                <div class="sheet">
+                    <h3>Machine learning</h3>
+                    <div class="sheet-grid">
+                        <div class="stamp skill stamp-saffron"><span class="stamp-glyph">TF</span><span class="stamp-name">TensorFlow</span></div>
+                        <div class="stamp skill stamp-ink"><span class="stamp-glyph">Sk</span><span class="stamp-name">scikit-learn</span></div>
+                        <div class="stamp skill stamp-red"><span class="stamp-glyph">Xg</span><span class="stamp-name">XGBoost</span></div>
+                        <div class="stamp skill stamp-green"><span class="stamp-glyph">Pd</span><span class="stamp-name">Pandas</span></div>
+                    </div>
+                </div>
+                <div class="sheet">
+                    <h3>Frontend and shipping</h3>
+                    <div class="sheet-grid">
+                        <div class="stamp skill stamp-ink"><span class="stamp-glyph">Re</span><span class="stamp-name">React</span></div>
+                        <div class="stamp skill stamp-red"><span class="stamp-glyph">H5</span><span class="stamp-name">HTML, CSS</span></div>
+                        <div class="stamp skill stamp-green"><span class="stamp-glyph">Git</span><span class="stamp-name">Git</span></div>
+                        <div class="stamp skill stamp-saffron"><span class="stamp-glyph">Vc</span><span class="stamp-name">Vercel</span></div>
+                    </div>
+                </div>
+            </div>
+            <p class="next">Going deeper on system design, Spring Boot, scalable SaaS architecture and ML deployment.</p>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section class="section contact" id="contact">
+            <h2 class="h2">Send me a postcard</h2>
+            <p class="sub">Tell me about your idea, a role or a collaboration. It goes straight to my inbox.</p>
+
+            <div class="contact-stage">
+                <form class="mail-card" id="contactForm" novalidate>
+                    <input type="hidden" name="access_key" value="04552b51-7f92-48ce-9cda-fd7610032fe3">
+                    <input type="hidden" name="subject" value="New postcard from rohithpatel.com">
+                    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                    <div class="mail-left">
+                        <label for="message" class="mail-label">Your message</label>
+                        <textarea id="message" name="message" rows="7" placeholder="Dear Rohith, I have an idea for…" required></textarea>
+                    </div>
+                    <div class="mail-right">
+                        <div class="stamp stamp-sm stamp-red mail-stamp" aria-hidden="true"><span class="stamp-glyph">₹0</span></div>
+                        <label class="mail-line"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
+                        <label class="mail-line"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+                        <button type="submit" class="btn btn-red"><span class="btn-text">Post it</span></button>
+                        <p class="form-status" role="status" aria-live="polite"></p>
+                    </div>
+                    <svg class="postmark sent-mark" viewBox="0 0 200 200" aria-hidden="true">
+                        <circle cx="100" cy="100" r="80" /><circle cx="100" cy="100" r="66" />
+                        <text x="100" y="98" text-anchor="middle" class="pm-big">SENT</text>
+                        <text x="100" y="122" text-anchor="middle" class="pm-small">THANK YOU</text>
+                    </svg>
+                </form>
+
+                <aside class="contact-aside">
+                    <a class="call-card" href="https://cal.com/rohith-scal/30min" target="_blank" rel="noopener noreferrer">
+                        <span class="call-title">Book a free 30-minute call about your SaaS idea</span>
+                        <span class="call-link">cal.com/rohith-scal</span>
+                    </a>
+                    <a class="call-card call-card-alt" href="https://cal.com/burntstack/30min" target="_blank" rel="noopener noreferrer">
+                        <span class="call-title">Have a project for BurntStack? Book a requirements call</span>
+                        <span class="call-link">cal.com/burntstack · or WhatsApp +91 79816 72639</span>
+                    </a>
+                    <ul class="links">
+                        <li><a href="https://wa.me/917981672639" target="_blank" rel="noopener noreferrer">WhatsApp BurntStack</a></li>
+                        <li><a href="mailto:uppunuthula.rohith@gmail.com">uppunuthula.rohith@gmail.com</a></li>
+                        <li><a href="mailto:info@rohithpatel.com">info@rohithpatel.com</a></li>
+                        <li><a href="https://www.burntstack.com" target="_blank" rel="noopener noreferrer">burntstack.com</a></li>
+                    </ul>
+                    <ul class="links links-inline">
+                        <li><a href="https://linkedin.com/in/rohith-uppunuthula" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                        <li><a href="https://github.com/U-ROHITH" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                        <li><a href="https://github.com/Rohith-CodeSage" target="_blank" rel="noopener noreferrer">GitHub, second account</a></li>
+                        <li><a href="https://leetcode.com/u/ROHITH-UPPUNUTHULA" target="_blank" rel="noopener noreferrer">LeetCode</a></li>
+                        <li><a href="https://www.youtube.com/@RohithUppunuthula" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+                        <li><a href="https://x.com/rohithuppunuth1" target="_blank" rel="noopener noreferrer">X</a></li>
+                        <li><a href="resume/RESUME_ROHITH_UPPUNUTHULA.pdf" download>Résumé (PDF)</a></li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+    </main>
+
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="footer-logo">ROHITH<span class="logo-dot">.</span></span>
-                    <p class="footer-tagline">Full-Stack Developer building digital experiences with clean code and thoughtful design.</p>
-                </div>
-
-                <div class="footer-links">
-                    <div class="footer-links-group">
-                        <h4 class="footer-links-title">Navigation</h4>
-                        <a href="#about">About</a>
-                        <a href="#experience">Experience</a>
-                        <a href="#projects">Projects</a>
-                        <a href="#contact">Contact</a>
-                    </div>
-                    <div class="footer-links-group">
-                        <h4 class="footer-links-title">Social</h4>
-                        <a href="https://github.com/U-ROHITH" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a href="https://linkedin.com/in/rohith-uppunuthula" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://leetcode.com/yourusername" target="_blank" rel="noopener noreferrer">LeetCode</a>
-                        <a href="https://x.com/rohithuppunuth1" target="_blank" rel="noopener noreferrer">Twitter</a>
-                    </div>
-                </div>
-
-                <div class="footer-socials">
-                    <a href="https://github.com/U-ROHITH" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                        </svg>
-                    </a>
-                    <a href="https://linkedin.com/in/rohith-uppunuthula" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                            <rect x="2" y="9" width="4" height="12"></rect>
-                            <circle cx="4" cy="4" r="2"></circle>
-                        </svg>
-                    </a>
-                    <a href="https://leetcode.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LeetCode" class="social-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
-                        </svg>
-                    </a>
-                    <a href="https://x.com/rohithuppunuth1" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="social-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
-                        </svg>
-                    </a>
-                    <a href="mailto:uppunuthula.rohith@gmail.com" aria-label="Email" class="social-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p class="copyright">Designed & Built by Rohith Uppunuthula</p>
-                <p class="copyright-year">&copy; 2025 All rights reserved.</p>
-            </div>
+        <p class="wish" aria-label="Wish you were here">
+            <span class="wave-line">Wish you</span>
+            <span class="wave-line accent">were here.</span>
+        </p>
+        <div class="footer-bar">
+            <span>&copy; <span data-year>2026</span> Rohith Uppunuthula, founder of BurntStack Technologies</span>
+            <a href="#home">Back to the front</a>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
