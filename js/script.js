@@ -1,873 +1,384 @@
-// ========================================
-// GOD-TIER MINIMALIST PORTFOLIO
-// Silicon Valley Level JavaScript
-// ========================================
-
-(function() {
+/* ==========================================================================
+   Postcards from a founder · motion
+   GSAP 3 (ScrollTrigger, SplitText, MotionPath) + Lenis.
+   Every animation follows the postcard metaphor: mail is sorted and
+   cancelled, the card is posted, turned over, stamped, flown and sent.
+   Without GSAP, or with reduced motion, the page is complete and static.
+   ========================================================================== */
+(() => {
     'use strict';
 
-    // ========================================
-    // 1. UTILITY FUNCTIONS
-    // ========================================
+    const $ = (s, c = document) => c.querySelector(s);
+    const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const hasGSAP = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
 
-    // Debounce for performance
-    const debounce = (func, wait = 10, immediate = false) => {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                timeout = null;
-                if (!immediate) func.apply(this, args);
-            };
-            const callNow = immediate && !timeout;
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-            if (callNow) func.apply(this, args);
+    const yearEl = $('[data-year]');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    /* ---------- Mobile menu ---------- */
+    const toggle = $('.nav-toggle');
+    const menu = $('.menu');
+    const setMenu = (open) => {
+        document.body.classList.toggle('menu-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menu.setAttribute('aria-hidden', String(!open));
+        if (window.__lenis) open ? window.__lenis.stop() : window.__lenis.start();
+        if (open && hasGSAP && !reduceMotion) {
+            gsap.fromTo($$('.menu-links a, .menu-call', menu), { y: 40, autoAlpha: 0 },
+                { y: 0, autoAlpha: 1, duration: .6, stagger: .06, delay: .15, ease: 'power3.out' });
+        }
+    };
+    toggle?.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+    $$('.menu a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+    /* ---------- Postcards: tap to turn over (touch) ---------- */
+    $$('.pc-flip').forEach(btn => btn.addEventListener('click', e => {
+        e.stopPropagation();
+        btn.closest('.pc').classList.toggle('is-flipped');
+    }));
+    $$('.pc:not(.pc-wip)').forEach(card => card.addEventListener('click', e => {
+        if (finePointer || e.target.closest('a')) return;
+        card.classList.toggle('is-flipped');
+    }));
+
+    initForm();
+
+    const loader = $('.loader');
+    if (!hasGSAP || reduceMotion) {
+        loader?.remove();
+        staticNav();
+        return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+    const hasSplit = typeof window.SplitText !== 'undefined';
+    const hasPath = typeof window.MotionPathPlugin !== 'undefined';
+    if (hasSplit) gsap.registerPlugin(SplitText);
+    if (hasPath) gsap.registerPlugin(MotionPathPlugin);
+    const fontsReady = document.fonts?.ready
+        ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 2500))])
+        : Promise.resolve();
+
+    /* ---------- Smooth scroll ---------- */
+    let lenis = null;
+    if (typeof window.Lenis !== 'undefined') {
+        lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+        window.__lenis = lenis;
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add(t => lenis.raf(t * 1000));
+        gsap.ticker.lagSmoothing(0);
+        lenis.stop();
+    }
+
+    const mm = gsap.matchMedia();
+    let heroST = null;   // desktop turn-over trigger, used by the "Note" link
+
+    $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        let dest = id === '#home' ? 0 : $(id);
+        if (dest === null) return;
+        e.preventDefault();
+        if (id === '#about' && heroST) dest = heroST.end;          // land on the turned card
+        if (lenis) lenis.scrollTo(dest, { duration: 1.4 });
+        else if (typeof dest === 'number') scrollTo({ top: dest, behavior: 'smooth' });
+        else dest.scrollIntoView({ behavior: 'smooth' });
+    }));
+
+    /* ---------- Nav + airmail progress ---------- */
+    const nav = $('.nav');
+    ScrollTrigger.create({
+        start: 0, end: 'max',
+        onUpdate: self => nav.classList.toggle('is-hidden', self.direction === 1 && self.scroll() > 400 && !document.body.classList.contains('menu-open'))
+    });
+    $$('.nav-links a[href^="#"]').forEach(link => {
+        const sec = $(link.getAttribute('href'));
+        if (!sec || link.getAttribute('href') === '#about') return;
+        ScrollTrigger.create({ trigger: sec, start: 'top 50%', end: 'bottom 50%', onToggle: s => link.classList.toggle('is-current', s.isActive) });
+    });
+    gsap.to('.progress-bar', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: .3 } });
+
+    /* ======================================================================
+       1. LOADER: three letters are sorted, then cancelled with a postmark
+       ====================================================================== */
+    const card3d = $('.card3d');
+    const cardIn = innerWidth > 900 ? card3d : $('.front');   // card3d is display:contents on small screens
+    const letters = $$('.bl');
+    gsap.set(cardIn, { y: 220, rotation: -8, autoAlpha: 0 });
+    gsap.set(letters, { yPercent: -140, autoAlpha: 0 });
+    gsap.set('.greet span', { yPercent: 60, autoAlpha: 0 });
+    gsap.set('.ribbon', { scaleX: 0 });
+    gsap.set('.hero-stamp', { scale: 2.6, rotation: -30, autoAlpha: 0 });
+    gsap.set('.hero-postmark', { scale: 1.6, autoAlpha: 0 });
+    gsap.set('.hero-foot > *', { y: 30, autoAlpha: 0 });
+    gsap.set(['.nav', '.turn-hint'], { autoAlpha: 0 });
+
+    const countEl = $('[data-count]');
+    const count = { v: 0 };
+    let ready = document.readyState === 'complete';
+    addEventListener('load', () => { ready = true; }, { once: true });
+
+    gsap.timeline()
+        .from('.loader-letter', { y: -260, rotation: () => gsap.utils.random(-30, 30), duration: .7, stagger: .14, ease: 'back.out(1.4)' })
+        .from('.loader-mark', { scale: 2.2, autoAlpha: 0, duration: .32, ease: 'power4.in' }, '+=.05')
+        .to('.loader-stack', { x: 4, duration: .05, yoyo: true, repeat: 3 })
+        .to(count, { v: 100, duration: 1.1, ease: 'power2.inOut', onUpdate: () => { countEl.textContent = Math.round(count.v); } }, '<')
+        .add(() => {
+            if (ready) outro();
+            else {
+                const t = setTimeout(outro, 2500);
+                addEventListener('load', () => { clearTimeout(t); outro(); }, { once: true });
+            }
+        });
+
+    let outroDone = false;
+    function outro() {
+        if (outroDone) return; outroDone = true;
+        gsap.timeline({ onComplete: () => { loader.remove(); lenis?.start(); ScrollTrigger.refresh(); } })
+            .to('.loader-letter, .loader-mark', { y: -120, autoAlpha: 0, duration: .4, stagger: .04, ease: 'power2.in' })
+            .to(loader, { yPercent: -100, duration: .8, ease: 'expo.inOut' }, '-=.15')
+            .add(heroIntro(), '-=.45');
+    }
+    setTimeout(() => { if (!outroDone) outro(); }, 7000);
+
+    /* ======================================================================
+       2. HERO: the card is posted onto the page, letters printed, stamped
+       ====================================================================== */
+    function heroIntro() {
+        return gsap.timeline()
+            .to(cardIn, { y: 0, rotation: 0, autoAlpha: 1, duration: 1.1, ease: 'expo.out' })
+            .to('.greet span', { yPercent: 0, autoAlpha: 1, duration: .6, stagger: .1, ease: 'back.out(2)' }, .3)
+            .to(letters, { yPercent: 0, autoAlpha: 1, duration: .55, stagger: .07, ease: 'bounce.out' }, .45)
+            .to('.ribbon', { scaleX: 1, duration: .6, ease: 'expo.out' }, 1.05)
+            .to('.hero-stamp', { scale: 1, rotation: 6, autoAlpha: 1, duration: .35, ease: 'power4.in' }, 1.2)
+            .to('.hero-postmark', { scale: 1, autoAlpha: .8, duration: .28, ease: 'power4.in' }, 1.5)
+            .fromTo(cardIn, { x: -5 }, { x: 0, duration: .45, ease: 'elastic.out(1.2, .25)' }, 1.55)
+            .fromTo('.hero-postmark .wave', { strokeDasharray: 140, strokeDashoffset: 140 }, { strokeDashoffset: 0, duration: .6, stagger: .05 }, 1.62)
+            .to('.hero-foot > *', { y: 0, autoAlpha: 1, duration: .7, stagger: .1, ease: 'power3.out' }, 1.3)
+            .to(['.nav', '.turn-hint'], { autoAlpha: 1, duration: .5 }, 1.6);
+    }
+
+    // Slow rotating print rays and the plane on its dotted route
+    gsap.to('.rays', { rotation: 360, duration: 160, repeat: -1, ease: 'none' });
+    if (hasPath && innerWidth > 600) {
+        gsap.set('.plane', { visibility: 'visible' });
+        gsap.to('.plane', {
+            duration: 14, repeat: -1, ease: 'none', delay: 2.4,
+            motionPath: { path: '#flightPath', align: '#flightPath', autoRotate: true, alignOrigin: [.5, .5] }
+        });
+        gsap.from('.flight path', { strokeDashoffset: 600, duration: 3, ease: 'power2.out', delay: 1.8 });
+    }
+
+    // Pointer: the card tilts like it's held, the pattern inside letters shifts
+    if (finePointer) {
+        const rx = gsap.quickTo('.card-stage', 'rotationX', { duration: .8, ease: 'power3' });
+        const ry = gsap.quickTo('.card-stage', 'rotationY', { duration: .8, ease: 'power3' });
+        $('.hero').addEventListener('pointermove', e => {
+            if (!outroDone) return;
+            const nx = e.clientX / innerWidth - .5, ny = e.clientY / innerHeight - .5;
+            rx(-ny * 6); ry(nx * 8);
+            letters.forEach((l, i) => l.style.setProperty('--bx', `${50 + nx * 70 + (i - 2.5) * 5}%`));
+        });
+        $('.hero').addEventListener('pointerleave', () => { rx(0); ry(0); });
+    }
+
+    /* ---------- Desktop: scroll turns the postcard over ---------- */
+    const sigPath = $('.signature path');
+    const sigLen = sigPath ? sigPath.getTotalLength() : 0;
+    if (sigPath) gsap.set(sigPath, { strokeDasharray: sigLen });
+    gsap.set('.card-stage', { transformPerspective: 1600 });
+    mm.add('(min-width: 901px)', () => {
+        const tl = gsap.timeline({
+            defaults: { ease: 'none' },
+            scrollTrigger: { trigger: '.hero-pin', start: 'top top', end: '+=130%', pin: true, scrub: .8, anticipatePin: 1 }
+        });
+        heroST = tl.scrollTrigger;
+        tl.to(['.hero-foot', '.turn-hint'], { y: 40, autoAlpha: 0, duration: .15 }, 0)
+          .to(card3d, { scale: .9, duration: .25, ease: 'power1.out' }, .05)
+          .to(card3d, { rotationY: 180, duration: .5, ease: 'power2.inOut' }, .1)
+          .to(card3d, { scale: 1, duration: .25, ease: 'power1.in' }, .35)
+          .to('.rays', { scale: 1.25, duration: .6 }, 0)
+          .fromTo('.signature path', { strokeDashoffset: () => sigLen }, { strokeDashoffset: 0, duration: .3 }, .62)
+          .from('.back-postmark', { scale: 1.8, autoAlpha: 0, duration: .06, ease: 'power4.in' }, .6)
+          .from('.back .stamp', { scale: 2, rotation: -20, autoAlpha: 0, duration: .06, ease: 'power4.in' }, .64)
+          .to({}, { duration: .12 });
+        return () => { heroST = null; };
+    });
+    mm.add('(max-width: 900px)', () => {
+        gsap.fromTo(sigPath, { strokeDashoffset: sigLen }, { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: '.signature', start: 'top 90%', end: 'top 60%', scrub: .6 } });
+        gsap.from('.back', { y: 80, rotation: 3, autoAlpha: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: '.back', start: 'top 85%' } });
+    });
+
+    /* ======================================================================
+       3. MARQUEE reacts to scroll speed and direction
+       ====================================================================== */
+    const loop = gsap.to('.marquee-track', { xPercent: -50, duration: 26, ease: 'none', repeat: -1 });
+    let idle;
+    ScrollTrigger.create({
+        start: 0, end: 'max',
+        onUpdate: self => {
+            const v = gsap.utils.clamp(-5, 5, self.getVelocity() / 350);
+            gsap.to(loop, { timeScale: v || 1, duration: .25, overwrite: true });
+            clearTimeout(idle);
+            idle = setTimeout(() => gsap.to(loop, { timeScale: self.direction === -1 ? -1 : 1, duration: .6 }), 140);
+        }
+    });
+
+    /* ======================================================================
+       4. PROCESS: six tickets are torn off the book, one per scroll step
+       ====================================================================== */
+    gsap.from('.tk', {
+        yPercent: -30, rotationX: -90, transformPerspective: 600, autoAlpha: 0, ease: 'power2.out', stagger: .5,
+        scrollTrigger: { trigger: '.tickets', start: 'top 80%', end: 'top 35%', scrub: .6 }
+    });
+
+    /* ======================================================================
+       5. TRACK RECORD: red route draws, plane flies it, passports are stamped
+       ====================================================================== */
+    gsap.timeline({ scrollTrigger: { trigger: '.route', start: 'top 60%', end: 'bottom 60%', scrub: .5 } })
+        .to('.route-fill', { scaleY: 1, ease: 'none' }, 0)
+        .to('.route-plane', { top: '100%', ease: 'none' }, 0);
+    $$('.stop').forEach(stop => {
+        const ticket = $('.ticket', stop), pass = $('.passport', stop);
+        const finalRot = gsap.getProperty(pass, 'rotation');
+        gsap.timeline({ scrollTrigger: { trigger: stop, start: 'top 72%' } })
+            .from(ticket, { y: 50, autoAlpha: 0, duration: .7, ease: 'power3.out' })
+            .fromTo(pass, { scale: 2.4, rotation: finalRot - 25, autoAlpha: 0 }, { scale: 1, rotation: finalRot, autoAlpha: 1, duration: .28, ease: 'power4.in' }, '-=.2')
+            .to(ticket, { y: 5, duration: .06, yoyo: true, repeat: 1, ease: 'power1.inOut' });
+    });
+
+    /* ======================================================================
+       6. PRODUCTS: a rack of postcards slides past (desktop, pinned)
+       ====================================================================== */
+    mm.add('(min-width: 901px)', () => {
+        const track = $('.work-track');
+        const distance = () => Math.max(0, track.scrollWidth - innerWidth);
+        const slide = gsap.to(track, {
+            x: () => -distance(), ease: 'none',                      // must be linear for containerAnimation
+            scrollTrigger: { trigger: '.work-pin', start: 'top top', end: () => '+=' + distance(), pin: true, scrub: 1, invalidateOnRefresh: true, anticipatePin: 1 }
+        });
+        $$('.pc', track).forEach(pc => {
+            gsap.fromTo(pc, { y: 70, rotation: 7 }, {
+                y: 0, rotation: 0, ease: 'power2.out',
+                scrollTrigger: { trigger: pc, containerAnimation: slide, start: 'left 105%', end: 'left 60%', scrub: true }
+            });
+        });
+    });
+    mm.add('(max-width: 900px)', () => {
+        $$('.pc').forEach((pc, i) => gsap.from(pc, {
+            y: 80, rotation: i % 2 ? 5 : -5, autoAlpha: 0, duration: .9, ease: 'expo.out',
+            scrollTrigger: { trigger: pc, start: 'top 88%' }
+        }));
+    });
+
+    /* ======================================================================
+       7. STACK: stamps are licked and stuck onto each sheet
+       ====================================================================== */
+    gsap.set('.skill', { autoAlpha: 0 });
+    ScrollTrigger.batch('.sheet', {
+        start: 'top 82%', once: true,
+        onEnter: sheets => sheets.forEach((sheet, i) => {
+            gsap.fromTo($$('.skill', sheet), { scale: 1.8, y: -30, autoAlpha: 0 }, {
+                scale: 1, y: 0, autoAlpha: 1, duration: .32, ease: 'power4.in', stagger: .09, delay: i * .15,
+                clearProps: 'transform'
+            });
+        })
+    });
+
+    /* ======================================================================
+       8. FOOTER: "wish you were here" waves like handwriting on a card
+       ====================================================================== */
+    fontsReady.then(() => {
+        if (hasSplit) {
+            $$('.wave-line').forEach((line, idx) => {
+                const s = SplitText.create(line, { type: 'chars' });
+                gsap.from(s.chars, {
+                    yPercent: 110, rotation: () => gsap.utils.random(-25, 25), autoAlpha: 0, duration: .9, stagger: .035, delay: idx * .2,
+                    ease: 'back.out(1.8)', scrollTrigger: { trigger: '.footer', start: 'top 70%' }
+                });
+                s.chars.forEach((c, i) => gsap.to(c, { y: -8, duration: 1.3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 1.6 + i * .07 }));
+            });
+        }
+        ScrollTrigger.refresh();
+    });
+
+    /* ====================================================================== */
+    function staticNav() {
+        let lastY = 0;
+        const navEl = $('.nav'), bar = $('.progress-bar');
+        addEventListener('scroll', () => {
+            const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
+            navEl.classList.toggle('is-hidden', y > lastY && y > 400);
+            lastY = y;
+            if (bar) bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+        }, { passive: true });
+    }
+
+    function initForm() {
+        const form = $('#contactForm');
+        if (!form) return;
+        const status = $('.form-status', form);
+        const btn = $('button[type="submit"]', form);
+        const btnText = $('.btn-text', form);
+        const required = $$('[required]', form);
+        const validate = el => {
+            const v = el.value.trim();
+            const ok = !!v && (el.type !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+            el.classList.toggle('error', !ok);
+            return ok;
         };
-    };
+        required.forEach(el => el.addEventListener('input', () => el.classList.contains('error') && validate(el)));
 
-    // Throttle for scroll events
-    const throttle = (func, limit = 16) => {
-        let inThrottle;
-        return function(...args) {
-            if (!inThrottle) {
-                func.apply(this, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        };
-    };
-
-    // Linear interpolation for smooth animations
-    const lerp = (start, end, factor) => start + (end - start) * factor;
-
-    // Clamp value between min and max
-    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
-
-    // Check for reduced motion preference
-    const prefersReducedMotion = () => {
-        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    };
-
-    // Check if device supports hover (desktop)
-    const supportsHover = () => {
-        return window.matchMedia('(hover: hover)').matches;
-    };
-
-    // ========================================
-    // 2. CUSTOM CURSOR
-    // ========================================
-
-    class CustomCursor {
-        constructor() {
-            if (!supportsHover() || prefersReducedMotion()) return;
-
-            this.cursor = null;
-            this.cursorDot = null;
-            this.cursorOutline = null;
-            this.mouseX = 0;
-            this.mouseY = 0;
-            this.cursorX = 0;
-            this.cursorY = 0;
-            this.outlineX = 0;
-            this.outlineY = 0;
-            this.isVisible = false;
-            this.isHovering = false;
-            this.isClicking = false;
-
-            this.init();
-        }
-
-        init() {
-            this.createCursor();
-            this.bindEvents();
-            this.render();
-        }
-
-        createCursor() {
-            this.cursor = document.createElement('div');
-            this.cursor.className = 'cursor';
-
-            this.cursorDot = document.createElement('div');
-            this.cursorDot.className = 'cursor-dot';
-
-            this.cursorOutline = document.createElement('div');
-            this.cursorOutline.className = 'cursor-outline';
-
-            this.cursor.appendChild(this.cursorDot);
-            this.cursor.appendChild(this.cursorOutline);
-            document.body.appendChild(this.cursor);
-        }
-
-        bindEvents() {
-            document.addEventListener('mousemove', (e) => {
-                this.mouseX = e.clientX;
-                this.mouseY = e.clientY;
-
-                if (!this.isVisible) {
-                    this.isVisible = true;
-                    this.cursor.classList.add('visible');
-                }
-            });
-
-            document.addEventListener('mouseenter', () => {
-                this.isVisible = true;
-                this.cursor.classList.add('visible');
-            });
-
-            document.addEventListener('mouseleave', () => {
-                this.isVisible = false;
-                this.cursor.classList.remove('visible');
-            });
-
-            document.addEventListener('mousedown', () => {
-                this.isClicking = true;
-                this.cursor.classList.add('clicking');
-            });
-
-            document.addEventListener('mouseup', () => {
-                this.isClicking = false;
-                this.cursor.classList.remove('clicking');
-            });
-
-            // Hover effects for interactive elements
-            const hoverElements = document.querySelectorAll(
-                'a, button, .btn, .project-card, .skill-category, .social-icon, .timeline-tag, .tech-badge, input, textarea'
-            );
-
-            hoverElements.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    this.isHovering = true;
-                    this.cursor.classList.add('hovering');
-                });
-
-                el.addEventListener('mouseleave', () => {
-                    this.isHovering = false;
-                    this.cursor.classList.remove('hovering');
-                });
-            });
-        }
-
-        render() {
-            // Smooth interpolation for cursor movement
-            const dotSpeed = 0.35;
-            const outlineSpeed = 0.15;
-
-            this.cursorX = lerp(this.cursorX, this.mouseX, dotSpeed);
-            this.cursorY = lerp(this.cursorY, this.mouseY, dotSpeed);
-            this.outlineX = lerp(this.outlineX, this.mouseX, outlineSpeed);
-            this.outlineY = lerp(this.outlineY, this.mouseY, outlineSpeed);
-
-            this.cursorDot.style.transform = `translate(${this.cursorX}px, ${this.cursorY}px) translate(-50%, -50%)`;
-            this.cursorOutline.style.transform = `translate(${this.outlineX}px, ${this.outlineY}px) translate(-50%, -50%)`;
-
-            requestAnimationFrame(() => this.render());
-        }
-    }
-
-    // ========================================
-    // 3. SCROLL PROGRESS INDICATOR
-    // ========================================
-
-    class ScrollProgress {
-        constructor() {
-            this.progressBar = null;
-            this.init();
-        }
-
-        init() {
-            this.createProgressBar();
-            this.bindEvents();
-        }
-
-        createProgressBar() {
-            const container = document.createElement('div');
-            container.className = 'scroll-progress';
-
-            this.progressBar = document.createElement('div');
-            this.progressBar.className = 'scroll-progress-bar';
-
-            container.appendChild(this.progressBar);
-            document.body.appendChild(container);
-        }
-
-        bindEvents() {
-            window.addEventListener('scroll', throttle(() => {
-                this.updateProgress();
-            }, 16));
-        }
-
-        updateProgress() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (scrollTop / scrollHeight) * 100;
-            this.progressBar.style.width = `${progress}%`;
-        }
-    }
-
-    // ========================================
-    // 4. MAGNETIC BUTTONS
-    // ========================================
-
-    class MagneticButton {
-        constructor(element) {
-            if (prefersReducedMotion() || !supportsHover()) return;
-
-            this.element = element;
-            this.boundingRect = null;
-            this.strength = 0.3;
-            this.init();
-        }
-
-        init() {
-            this.element.addEventListener('mouseenter', () => {
-                this.boundingRect = this.element.getBoundingClientRect();
-            });
-
-            this.element.addEventListener('mousemove', (e) => {
-                this.moveMagnet(e);
-            });
-
-            this.element.addEventListener('mouseleave', () => {
-                this.resetMagnet();
-            });
-        }
-
-        moveMagnet(e) {
-            if (!this.boundingRect) return;
-
-            const centerX = this.boundingRect.left + this.boundingRect.width / 2;
-            const centerY = this.boundingRect.top + this.boundingRect.height / 2;
-
-            const deltaX = (e.clientX - centerX) * this.strength;
-            const deltaY = (e.clientY - centerY) * this.strength;
-
-            this.element.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-        }
-
-        resetMagnet() {
-            this.element.style.transform = 'translate(0, 0)';
-        }
-    }
-
-    // ========================================
-    // 5. SMOOTH REVEAL ANIMATIONS
-    // ========================================
-
-    class ScrollReveal {
-        constructor() {
-            this.elements = [];
-            this.init();
-        }
-
-        init() {
-            this.elements = document.querySelectorAll('[data-aos]');
-
-            if (prefersReducedMotion()) {
-                this.elements.forEach(el => el.classList.add('aos-animate'));
-                return;
-            }
-
-            this.createObserver();
-        }
-
-        createObserver() {
-            const options = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -80px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const delay = entry.target.dataset.aosDelay || 0;
-                        setTimeout(() => {
-                            entry.target.classList.add('aos-animate');
-                        }, parseInt(delay));
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, options);
-
-            this.elements.forEach(el => observer.observe(el));
-        }
-    }
-
-    // ========================================
-    // 6. TIMELINE ANIMATIONS
-    // ========================================
-
-    class TimelineAnimation {
-        constructor() {
-            this.init();
-        }
-
-        init() {
-            const timelines = document.querySelectorAll('.timeline');
-
-            if (prefersReducedMotion()) {
-                document.querySelectorAll('.timeline-item').forEach(item => {
-                    item.classList.add('aos-animate');
-                });
-                return;
-            }
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const items = entry.target.querySelectorAll('.timeline-item');
-                        items.forEach((item, index) => {
-                            setTimeout(() => {
-                                item.classList.add('aos-animate');
-                            }, index * 150);
-                        });
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.2,
-                rootMargin: '0px 0px -100px 0px'
-            });
-
-            timelines.forEach(timeline => observer.observe(timeline));
-        }
-    }
-
-    // ========================================
-    // 7. NAVBAR CONTROLLER
-    // ========================================
-
-    class NavbarController {
-        constructor() {
-            this.navbar = document.getElementById('navbar');
-            this.menuToggle = document.getElementById('menuToggle');
-            this.navMenu = document.getElementById('navMenu');
-            this.navLinks = document.querySelectorAll('.nav-link');
-            this.sections = document.querySelectorAll('section[id]');
-            this.lastScroll = 0;
-
-            this.init();
-        }
-
-        init() {
-            this.bindEvents();
-        }
-
-        bindEvents() {
-            // Scroll effect
-            window.addEventListener('scroll', throttle(() => {
-                this.handleScroll();
-                this.highlightActiveLink();
-            }, 16));
-
-            // Mobile menu toggle
-            this.menuToggle.addEventListener('click', () => this.toggleMenu());
-
-            // Close menu on link click
-            this.navLinks.forEach(link => {
-                link.addEventListener('click', () => this.closeMenu());
-            });
-
-            // Close menu on outside click
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.nav-container') && this.navMenu.classList.contains('active')) {
-                    this.closeMenu();
-                }
-            });
-
-            // Keyboard accessibility
-            this.menuToggle.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.toggleMenu();
-                }
-            });
-        }
-
-        handleScroll() {
-            const currentScroll = window.pageYOffset;
-
-            if (currentScroll > 50) {
-                this.navbar.classList.add('scrolled');
-            } else {
-                this.navbar.classList.remove('scrolled');
-            }
-
-            this.lastScroll = currentScroll;
-        }
-
-        highlightActiveLink() {
-            const scrollPosition = window.scrollY + this.navbar.offsetHeight + 100;
-
-            this.sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                const sectionId = section.getAttribute('id');
-                const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    this.navLinks.forEach(link => link.classList.remove('active'));
-                    if (navLink) navLink.classList.add('active');
-                }
-            });
-        }
-
-        toggleMenu() {
-            this.menuToggle.classList.toggle('active');
-            this.navMenu.classList.toggle('active');
-            document.body.style.overflow = this.navMenu.classList.contains('active') ? 'hidden' : '';
-
-            const isExpanded = this.menuToggle.classList.contains('active');
-            this.menuToggle.setAttribute('aria-expanded', isExpanded);
-        }
-
-        closeMenu() {
-            this.menuToggle.classList.remove('active');
-            this.navMenu.classList.remove('active');
-            document.body.style.overflow = '';
-            this.menuToggle.setAttribute('aria-expanded', 'false');
-        }
-    }
-
-    // ========================================
-    // 8. SMOOTH SCROLL
-    // ========================================
-
-    class SmoothScroll {
-        constructor() {
-            this.init();
-        }
-
-        init() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', (e) => {
-                    e.preventDefault();
-
-                    const targetId = anchor.getAttribute('href');
-                    if (targetId === '#') {
-                        this.scrollToTop();
-                        return;
-                    }
-
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        this.scrollToElement(targetElement);
-                    }
-                });
-            });
-
-            // Logo click scrolls to top
-            const logo = document.querySelector('.logo');
-            if (logo) {
-                logo.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    this.scrollToTop();
-                    history.pushState(null, null, window.location.pathname);
-                });
-            }
-        }
-
-        scrollToElement(element) {
-            const navbar = document.getElementById('navbar');
-            const navbarHeight = navbar ? navbar.offsetHeight : 0;
-            const targetPosition = element.offsetTop - navbarHeight - 20;
-
-            window.scrollTo({
-                top: targetPosition,
-                behavior: prefersReducedMotion() ? 'auto' : 'smooth'
-            });
-        }
-
-        scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: prefersReducedMotion() ? 'auto' : 'smooth'
-            });
-        }
-    }
-
-    // ========================================
-    // 9. CONTACT FORM HANDLER
-    // ========================================
-
-    class ContactForm {
-        constructor() {
-            this.form = document.getElementById('contactForm');
-            if (!this.form) return;
-
-            this.submitBtn = this.form.querySelector('.submit-btn');
-            this.btnText = this.submitBtn.querySelector('.btn-text');
-            this.btnLoading = this.submitBtn.querySelector('.btn-loading');
-            this.formMessage = document.getElementById('formMessage');
-            this.inputs = this.form.querySelectorAll('input, textarea');
-
-            this.init();
-        }
-
-        init() {
-            this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-            this.inputs.forEach(input => {
-                input.addEventListener('blur', () => this.validateInput(input));
-                input.addEventListener('input', () => {
-                    if (input.classList.contains('error')) {
-                        input.classList.remove('error');
-                    }
-                });
-            });
-        }
-
-        async handleSubmit(e) {
+        form.addEventListener('submit', async e => {
             e.preventDefault();
-
-            // Validate all inputs
-            let isValid = true;
-            this.inputs.forEach(input => {
-                if (!this.validateInput(input)) {
-                    isValid = false;
-                }
-            });
-
-            if (!isValid) return;
-
-            // Show loading state
-            this.setLoading(true);
-
+            if (!required.map(validate).every(Boolean)) {
+                status.className = 'form-status err';
+                status.textContent = 'Add your message, name and a valid email, then post it again.';
+                if (hasGSAP && !reduceMotion) gsap.fromTo(form, { x: -8 }, { x: 0, duration: .5, ease: 'elastic.out(1.2, .25)' });
+                return;
+            }
+            btn.disabled = true;
+            btnText.textContent = 'Posting…';
+            status.className = 'form-status';
+            status.textContent = '';
             try {
-                const formData = new FormData(this.form);
-                const data = Object.fromEntries(formData);
-
-                const response = await fetch('https://api.web3forms.com/submit', {
+                const res = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(data)
+                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                    body: JSON.stringify(Object.fromEntries(new FormData(form)))
                 });
-
-                const result = await response.json();
-
-                if (response.ok && result.success) {
-                    this.showMessage('success', 'Message sent successfully! I\'ll get back to you soon.');
-                    this.form.reset();
-                } else {
-                    this.showMessage('error', result.message || 'Something went wrong. Please try again.');
-                }
-            } catch (error) {
-                console.error('Form submission error:', error);
-                this.showMessage('error', 'Connection error. Please check your internet and try again.');
+                const result = await res.json();
+                if (!res.ok || !result.success) throw new Error(result.message || 'The message was not accepted.');
+                await sentAnimation(form);
+                form.reset();
+                status.className = 'form-status ok';
+                status.textContent = "Posted. I'll reply to your email soon.";
+            } catch (err) {
+                status.className = 'form-status err';
+                status.textContent = err && err.message && err.message !== 'Failed to fetch'
+                    ? err.message
+                    : 'Could not reach the mail server. Email me at uppunuthula.rohith@gmail.com instead.';
             } finally {
-                this.setLoading(false);
+                btn.disabled = false;
+                btnText.textContent = 'Post it';
             }
-        }
-
-        validateInput(input) {
-            const value = input.value.trim();
-
-            if (input.hasAttribute('required') && !value) {
-                input.classList.add('error');
-                return false;
-            }
-
-            if (input.type === 'email' && value) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(value)) {
-                    input.classList.add('error');
-                    return false;
-                }
-            }
-
-            input.classList.remove('error');
-            return true;
-        }
-
-        setLoading(isLoading) {
-            this.submitBtn.disabled = isLoading;
-            this.btnText.classList.toggle('hidden', isLoading);
-            this.btnLoading.classList.toggle('hidden', !isLoading);
-        }
-
-        showMessage(type, message) {
-            this.formMessage.textContent = message;
-            this.formMessage.className = `form-message ${type}`;
-            this.formMessage.classList.remove('hidden');
-
-            if (type === 'success') {
-                setTimeout(() => {
-                    this.formMessage.classList.add('hidden');
-                }, 6000);
-            }
-        }
+        });
     }
 
-    // ========================================
-    // 10. SCROLL INDICATOR
-    // ========================================
-
-    class ScrollIndicator {
-        constructor() {
-            this.indicator = document.querySelector('.scroll-indicator');
-            if (!this.indicator) return;
-
-            this.init();
-        }
-
-        init() {
-            window.addEventListener('scroll', debounce(() => {
-                if (window.scrollY > 100) {
-                    this.indicator.style.opacity = '0';
-                    this.indicator.style.pointerEvents = 'none';
-                } else {
-                    this.indicator.style.opacity = '1';
-                    this.indicator.style.pointerEvents = 'auto';
-                }
-            }, 10));
-        }
+    function sentAnimation(form) {
+        if (!hasGSAP || reduceMotion) return Promise.resolve();
+        const mark = $('.sent-mark', form);
+        return new Promise(resolve => {
+            gsap.timeline({ onComplete: resolve })
+                .to(form, { rotation: -4, scale: .95, duration: .25, ease: 'power2.out' })
+                .to(form, { x: () => innerWidth, y: -200, rotation: 18, duration: .7, ease: 'power3.in' })
+                .set(form, { x: () => -innerWidth * .5, y: 80, rotation: -8 })
+                .to(form, { x: 0, y: 0, rotation: 0, scale: 1, duration: .9, ease: 'expo.out' })
+                .fromTo(mark, { autoAlpha: 0, scale: 2.2, rotation: -40 }, { autoAlpha: .9, scale: 1, rotation: -14, duration: .3, ease: 'power4.in' })
+                .to(mark, { autoAlpha: 0, duration: .5, delay: 1.6 });
+        });
     }
-
-    // ========================================
-    // 11. TEXT SPLIT ANIMATION
-    // ========================================
-
-    class TextSplitter {
-        constructor() {
-            if (prefersReducedMotion()) return;
-            this.init();
-        }
-
-        init() {
-            const elements = document.querySelectorAll('[data-split-text]');
-
-            elements.forEach(el => {
-                const text = el.textContent;
-                el.innerHTML = '';
-                el.classList.add('split-text');
-
-                text.split('').forEach((char, i) => {
-                    const span = document.createElement('span');
-                    span.className = 'char';
-                    span.textContent = char === ' ' ? '\u00A0' : char;
-                    span.style.transitionDelay = `${i * 0.03}s`;
-                    el.appendChild(span);
-                });
-
-                // Animate when in view
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            setTimeout(() => {
-                                el.classList.add('animate');
-                            }, 100);
-                            observer.unobserve(el);
-                        }
-                    });
-                }, { threshold: 0.5 });
-
-                observer.observe(el);
-            });
-        }
-    }
-
-    // ========================================
-    // 12. HOVER EFFECTS ENHANCEMENT
-    // ========================================
-
-    class HoverEffects {
-        constructor() {
-            if (prefersReducedMotion()) return;
-            this.init();
-        }
-
-        init() {
-            // Project cards tilt effect
-            document.querySelectorAll('.project-card:not(.project-card-placeholder)').forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-
-                    const rotateX = (y - centerY) / 20;
-                    const rotateY = (centerX - x) / 20;
-
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-                });
-            });
-
-            // Skill categories
-            document.querySelectorAll('.skill-category').forEach(category => {
-                category.addEventListener('mousemove', (e) => {
-                    const rect = category.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-
-                    category.style.setProperty('--mouse-x', `${x}px`);
-                    category.style.setProperty('--mouse-y', `${y}px`);
-                });
-            });
-        }
-    }
-
-    // ========================================
-    // 13. PAGE LOAD ANIMATION
-    // ========================================
-
-    class PageLoader {
-        constructor() {
-            this.init();
-        }
-
-        init() {
-            // Wait for all content to load
-            if (document.readyState === 'complete') {
-                this.onLoad();
-            } else {
-                window.addEventListener('load', () => this.onLoad());
-            }
-        }
-
-        onLoad() {
-            // Small delay for smoother perception
-            setTimeout(() => {
-                document.body.classList.add('loaded');
-            }, 100);
-        }
-    }
-
-    // ========================================
-    // 14. CONSOLE BRANDING
-    // ========================================
-
-    class ConsoleBranding {
-        constructor() {
-            this.init();
-        }
-
-        init() {
-            const styles = {
-                title: 'font-size: 24px; font-weight: bold; color: #0A0A0A; font-family: Georgia, serif;',
-                subtitle: 'font-size: 14px; color: #525252; font-family: -apple-system, sans-serif;',
-                detail: 'font-size: 12px; color: #8A8A8A; font-family: -apple-system, sans-serif;'
-            };
-
-            console.log('%cROHITH.', styles.title);
-            console.log('%cFull-Stack Developer', styles.subtitle);
-            console.log('%c', '');
-            console.log('%cBuilt with vanilla HTML, CSS & JavaScript', styles.detail);
-            console.log('%cNo frameworks, just clean code.', styles.detail);
-            console.log('%c', '');
-            console.log('%cInterested in collaborating? Get in touch!', styles.subtitle);
-        }
-    }
-
-    // ========================================
-    // 15. LAZY LOADING
-    // ========================================
-
-    class LazyLoader {
-        constructor() {
-            this.init();
-        }
-
-        init() {
-            if ('loading' in HTMLImageElement.prototype) {
-                // Native lazy loading supported
-                document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-                    if (img.dataset.src) {
-                        img.src = img.dataset.src;
-                    }
-                });
-            } else {
-                // Fallback for older browsers
-                const images = document.querySelectorAll('img[data-src]');
-                const imageObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                            imageObserver.unobserve(img);
-                        }
-                    });
-                });
-
-                images.forEach(img => imageObserver.observe(img));
-            }
-        }
-    }
-
-    // ========================================
-    // 16. CURRENT YEAR UPDATE
-    // ========================================
-
-    class YearUpdater {
-        constructor() {
-            this.init();
-        }
-
-        init() {
-            const yearElements = document.querySelectorAll('.current-year');
-            const currentYear = new Date().getFullYear();
-
-            yearElements.forEach(el => {
-                el.textContent = currentYear;
-            });
-        }
-    }
-
-    // ========================================
-    // 17. INITIALIZATION
-    // ========================================
-
-    class App {
-        constructor() {
-            this.init();
-        }
-
-        init() {
-            // Core functionality
-            new PageLoader();
-            new NavbarController();
-            new SmoothScroll();
-            new ContactForm();
-            new LazyLoader();
-            new YearUpdater();
-
-            // Visual enhancements
-            new ScrollProgress();
-            new ScrollReveal();
-            new TimelineAnimation();
-            new ScrollIndicator();
-            new HoverEffects();
-            new ConsoleBranding();
-
-            // Premium features (desktop only)
-            if (supportsHover()) {
-                new CustomCursor();
-                new TextSplitter();
-
-                // Apply magnetic effect to primary buttons
-                document.querySelectorAll('.btn-primary').forEach(btn => {
-                    new MagneticButton(btn);
-                });
-            }
-        }
-    }
-
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => new App());
-    } else {
-        new App();
-    }
-
 })();
-
-// ========================================
-// END OF SCRIPT
-// ========================================
